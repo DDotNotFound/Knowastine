@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gusto mo ba ako?</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin-top: 100px;
+      background-color: #fffdf0;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      font-size: 18px;
+      margin: 10px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    #yes {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    #no {
+      background-color: #f44336;
+      color: white;
+      position: absolute;
+    }
+
+    #no.shake {
+      animation: shake 0.3s;
+      animation-iteration-count: 1;
+    }
+
+    @keyframes shake {
+      0% { transform: translate(0px, 0px); }
+      25% { transform: translate(5px, 5px); }
+      50% { transform: translate(-5px, -5px); }
+      75% { transform: translate(5px, -5px); }
+      100% { transform: translate(0px, 0px); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hi Cutiee, bembanganHAHAHA?? 😏</h1>
+
+  <button class="btn" id="yes">Yes 😍</button>
+  <button class="btn" id="no">No 🙁</button>
+
+  <!-- Sound Effect -->
+  <audio id="boomSound" src="https://www.myinstants.com/media/sounds/vine-boom.mp3" preload="auto"></audio>
+
+  <script>
+    const yesBtn = document.getElementById("yes");
+    const noBtn = document.getElementById("no");
+    const boom = document.getElementById("boomSound");
+
+    yesBtn.addEventListener("click", () => {
+      boom.play();
+      document.body.innerHTML = `
+        <h1>YEHEYY, SUNDUIN KITA JOLLIBEE! 🥰</h1>
+        <p>Alam ko naman gusto mo eh😎</p>
+        <img src="https://media.tenor.com/As5hW-Mzq3gAAAAi/peach-goma-cute.gif" width="200"/>
+      `;
+    });
+
+    noBtn.addEventListener("mouseover", () => {
+      boom.play();
+      noBtn.classList.add("shake");
+      setTimeout(() => noBtn.classList.remove("shake"), 300);
+
+      const x = Math.floor(Math.random() * (window.innerWidth - 150));
+      const y = Math.floor(Math.random() * (window.innerHeight - 100));
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+  </script>
+
+</body>
+                                      </html>
+                                      
