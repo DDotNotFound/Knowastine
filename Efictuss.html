@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Secure Login Portal by: Efictu$$</title>
+  <style>
+    @keyframes glitch {
+      0% { text-shadow: 2px 2px red; }
+      20% { text-shadow: -2px 2px lime; }
+      40% { text-shadow: 2px -2px blue; }
+      60% { text-shadow: -2px -2px yellow; }
+      80% { text-shadow: 2px 2px cyan; }
+      100% { text-shadow: -2px -2px red; }
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    body {
+      background-color: #0d0d0d;
+      color: #00ff00;
+      font-family: monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+
+    input, button {
+      margin: 10px;
+      padding: 10px;
+      width: 250px;
+      background: black;
+      color: #00ff00;
+      border: 1px solid #00ff00;
+      font-family: monospace;
+    }
+
+    #hackedScreen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    #hackedScreen h1 {
+      font-size: 3em;
+      animation: glitch 0.3s infinite;
+      color: red;
+    }
+
+    #hackedScreen p {
+      color: white;
+      margin-top: 10px;
+    }
+
+    #typing {
+      margin-top: 20px;
+      color: lime;
+      font-size: 1.2em;
+      height: 40px;
+      white-space: pre-wrap;
+    }
+
+    #countdown {
+      font-size: 2em;
+      color: red;
+      margin: 10px 0;
+      animation: blink 1s infinite;
+    }
+
+    #hackedScreen img {
+      margin: 20px 0;
+    }
+
+    #hackedScreen button {
+      margin: 5px;
+      padding: 10px 20px;
+      background: red;
+      border: none;
+      color: white;
+      border-radius: 6px;
+    }
+
+    #loginForm {
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="loginForm">
+    <h1>Login to efictu$$</h1>
+    <input type="text" id="username" placeholder="Username"><br>
+    <input type="password" id="password" placeholder="Password"><br>
+    <button onclick="triggerPrank()">LOGIN</button>
+  </div>
+
+  <div id="hackedScreen">
+    <h1>⚠️ SYSTEM BREACH</h1>
+    <p>Unauthorized access detected. Initiating countermeasures...</p>
+    <div id="typing"></div>
+    <div id="countdown">10</div>
+    <img src="https://media.tenor.com/Ug6xF5LbNQMAAAAC/hacker.gif" width="250">
+    <button onclick="goBack()">⬅️ Go Back</button>
+    <button onclick="continuePrank()">😈 Continue</button>
+  </div>
+
+  <audio id="alertSound">
+    <source src="https://www.myinstants.com/media/sounds/windows-xp-error.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function triggerPrank() {
+      const alertSound = document.getElementById("alertSound");
+      alertSound.play();
+
+      document.getElementById("loginForm").style.display = "none";
+      document.getElementById("hackedScreen").style.display = "flex";
+
+      startTyping("Tracing IP address...\nLocation Found: Philippines 🇵🇭\nSending Data to HQ...");
+      startCountdown(10);
+    }
+
+    function startTyping(text) {
+      let index = 0;
+      const typingDiv = document.getElementById("typing");
+      const interval = setInterval(() => {
+        typingDiv.textContent += text[index];
+        index++;
+        if (index >= text.length) clearInterval(interval);
+      }, 50);
+    }
+
+    function startCountdown(seconds) {
+      const countdown = document.getElementById("countdown");
+      let count = seconds;
+      const timer = setInterval(() => {
+        count--;
+        countdown.textContent = count;
+        if (count <= 0) {
+          clearInterval(timer);
+          countdown.textContent = "⚠️ DATA SENT!";
+        }
+      }, 1000);
+    }
+
+    function goBack() {
+      window.location.href = "index.html";
+    }
+
+    function continuePrank() {
+      alert("It’s too late, Broskie 😈 Your signal’s already cloned.");
+    }
+  </script>
+
+</body>
+</html>
