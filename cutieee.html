@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For You ❤️</title>
+  <style>
+    body {
+      background: #1a1a1a;
+      color: #fff;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding-top: 100px;
+      overflow-x: hidden;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      background: #ff0066;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: #ff3399;
+    }
+
+    #reveal {
+      margin-top: 30px;
+      display: none;
+    }
+
+    #reveal img {
+      width: 200px;
+      border-radius: 15px;
+      border: 3px solid pink;
+    }
+
+    #reveal p {
+      font-size: 20px;
+      margin-top: 15px;
+      color: pink;
+    }
+
+    audio {
+      margin-top: 20px;
+    }
+
+    /* Heart animation */
+    .hearts-container {
+      position: fixed;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 999;
+      display: none;
+    }
+
+    .left-hearts {
+      left: 20px;
+    }
+
+    .right-hearts {
+      right: 20px;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      transform: rotate(45deg);
+      animation: floatUp 4s linear infinite;
+      opacity: 0.8;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-800px) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hi Cutieee! 💕</h1>
+  <p>I have something for you...</p>
+  <button onclick="showLove()">lick me hehehe</button>
+
+  <div id="reveal">
+    <img src="https://i.imgur.com/r48Zb3Z.jpeg" alt="Cute pic">
+    <p>Hi Cutiee uhmmm gusto ko lang mag thankyou sa mga ginagawa mo saken sa lahat lahat po, and i know its normal day and walang ganap pero gusto ko lang ipaalala sa'yo kung gaano ka kahalaga sa akin. Kahit walang dahilan, gusto ko lang sabihin kung gaano ako kasaya na ikaw yung kausap ko, ikaw yung inaasahan ko, at ikaw yung laging naiisip ko gusto ko ipafeel sayo na araw araw special day, sana baby mag tuloy tuloy pa yung relationship naten wag tayo susuko baby ah? may hinihigitan pa tayong ipis janHAHAHAHA joke and sana baby wag kana lagi mang away pag boring ka kasi kawawa nakoHAHAHA pero its oky handa kitang intindihin sa lahat at sabayan sa kabaliwan mo sa buhay and baby alam mo naman na wala akong hinihiling kundi makasama ka sa bawat araw, kahit hindi laging masaya, basta ikaw ang kasama ko sapat na. Hindi mo kailangang gumawa ng kahit ano para mapasaya, ikaw pa lang buo na ako, paniss ka na naman babyHAHAHA ILOVEYOUSOOMUCH MY BABY CUTIEEE 💖</p>
+    <audio id="bgMusic">
+      <source src="daniel_caesar_chorus.mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <!-- Left and Right heart containers -->
+  <div class="hearts-container left-hearts" id="leftHearts"></div>
+  <div class="hearts-container right-hearts" id="rightHearts"></div>
+
+  <script>
+    function showLove() {
+      document.getElementById("reveal").style.display = "block";
+      const music = document.getElementById("bgMusic");
+
+      // Play from 1:28
+      music.currentTime = 88;
+      music.play().catch((err) => {
+        alert("Click again to allow the music broskie!");
+        console.error(err);
+      });
+
+      // Loop from 1:28 after ending
+      music.addEventListener('ended', () => {
+        music.currentTime = 88;
+        music.play();
+      });
+
+      // Show both heart containers
+      document.getElementById("leftHearts").style.display = "block";
+      document.getElementById("rightHearts").style.display = "block";
+
+      // Heart spawn function
+      function spawnHeart(container) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 40 + "px";
+        heart.style.animationDuration = (3 + Math.random() * 2) + "s";
+        container.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+      }
+
+      // Spawn hearts on both sides
+      setInterval(() => {
+        spawnHeart(document.getElementById("leftHearts"));
+        spawnHeart(document.getElementById("rightHearts"));
+      }, 300);
+    }
+  </script>
+
+</body>
+  </html>
